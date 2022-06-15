@@ -1,0 +1,50 @@
+// { Driver Code Starts
+import java.io.*;
+import java.util.*;
+import java.util.Map.Entry;
+
+class GFG {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+            Solution g = new Solution();
+            ArrayList<Integer> ans = g.duplicates(a, n);
+            for (Integer val : ans) System.out.print(val + " ");
+            System.out.println();
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution {
+    public static ArrayList<Integer> duplicates(int arr[], int n) {
+        // code here
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+        HashMap<Integer,Integer> h = new HashMap<>();
+        for(int i :arr){
+            if(h.get(i) == null ){
+            h.put(i,i);
+        }
+        else if(ar.contains(i)){
+            continue;
+        }
+        
+        else{
+            ar.add(i);
+        }
+        
+        }
+        if(ar.size() == 0){
+            ar.add(-1);
+            
+        }
+      //Collection.sort(ar);
+      Collections.sort(ar);
+        return ar;
+    }
+}
